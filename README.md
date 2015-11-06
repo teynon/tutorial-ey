@@ -5,8 +5,7 @@ Demo: http://teynon.github.io/tutorial-ey/demo.html
 
 Dependencies
 ----
-jQuery
-jQueryUI
+jQuery, jQueryUI
 
 Usage
 ----
