@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Demo - Tutorial-Ey</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="style/prism.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <script src="script/prism.js"></script>
+        <link rel="stylesheet" href="style/tutorial-ey.css">
+        <script src="script/tutorial-ey.js"></script>
+        <script>
+            $(window).load(function() {
+                var tutorial = new com.eynon.tutorialEy();
+                var tutorials = [
+                    {
+                        Section: "Overview",
+                        Contents: [
+                            {
+                                title: "Tutorial-Ey Overview",
+                                body: "This is the Tutorial-Ey demo. Click next for an example.",
+                                pointTo: $("#step1"),
+                                advanceOptions : {
+                                    onStep: function () {
+                                        $("#step1").hide();
+                                    }
+                                }
+                            },
+                            {
+                                title: "Step 1",
+                                body: "Please mouseover the button to continue.",
+                                pointTo: $("#step1"),
+                                advanceOptions : {
+                                    eventListeners: {
+                                        target: $("#step1"),
+                                        action: "mouseover"
+                                    },
+                                    onStep: function () {
+                                        $("#step1").show();
+                                        $("#step1").text("Mouse over for step 2");
+                                    }
+                                }
+                            },
+                            {
+                                title: "Step 2",
+                                body: "Please mouseout the button to continue.",
+                                pointTo: $("#step1"),
+                                advanceOptions : {
+                                    eventListeners: {
+                                        target: $("#step1"),
+                                        action: "mouseout"
+                                    },
+                                    onStep: function () {
+                                        $("#step1").show();
+                                        $("#step1").text("Mouse out for step 3");
+                                    }
+                                }
+                            },
+                            {
+                                title: "Step 3",
+                                body: "Please click the button to continue.",
+                                pointTo: $("#step1"),
+                                advanceOptions : {
+                                    eventListeners: {
+                                        target: $("#step1"),
+                                        action: "click"
+                                    },
+                                    onStep: function () {
+                                        $("#step1").show();
+                                        $("#step1").text("Click for step 3");
+                                    }
+                                }
+                            },
+                            {
+                                title: "Finished",
+                                body: "Thanks for viewing our tutorial.",
+                                pointTo: $("#step1"),
+                                advanceOptions : {
+                                    eventListeners: {
+                                        target: $("#step1"),
+                                        action: "click"
+                                    },
+                                    onStep: function () {
+                                        $("#step1").hide();
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ];
+
+                for (var i in tutorials) {
+                    var steps = [];
+                    for (var j in tutorials[i].Contents) {
+                        var data = tutorials[i].Contents[j];
+                        steps.push(new com.eynon.tutorialStep(data.pointTo, data.title, data.body, data.advanceOptions));
+                    }
+                    tutorial.addSection(tutorials[i].Section, steps);
+                }
+
+                tutorial.play();
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Tutorial-Ey Overview</h1>
+        <article>
+            <p>Tutorial-Ey is an active step-by-step tutorial for web-based applications. 
+                It provides a mechanism for explaining application processes to users.
+            </p>
+        </article><h1>Demo Code</h1>
+        <button id="step1">Hover for Step 2</button>
+        <div>
+            <pre><code class="language-javascript">$(window).load(function() {
+    var tutorial = new com.eynon.tutorialEy();
+    var tutorials = [
+        {
+            Section: "Overview",
+            Contents: [
+                {
+                    title: "Tutorial-Ey Overview",
+                    body: "This is the Tutorial-Ey demo. Click next for an example.",
+                    pointTo: $("#step1"),
+                    advanceOptions : {
+                        onStep: function () {
+                            $("#step1").hide();
+                        }
+                    }
+                },
+                {
+                    title: "Step 1",
+                    body: "Please mouseover the button to continue.",
+                    pointTo: $("#step1"),
+                    advanceOptions : {
+                        eventListeners: {
+                            target: $("#step1"),
+                            action: "mouseover"
+                        },
+                        onStep: function () {
+                            $("#step1").show();
+                            $("#step1").text("Mouse over for step 2");
+                        }
+                    }
+                },
+                {
+                    title: "Step 2",
+                    body: "Please mouseout the button to continue.",
+                    pointTo: $("#step1"),
+                    advanceOptions : {
+                        eventListeners: {
+                            target: $("#step1"),
+                            action: "mouseout"
+                        },
+                        onStep: function () {
+                            $("#step1").show();
+                            $("#step1").text("Mouse out for step 3");
+                        }
+                    }
+                },
+                {
+                    title: "Step 3",
+                    body: "Please click the button to continue.",
+                    pointTo: $("#step1"),
+                    advanceOptions : {
+                        eventListeners: {
+                            target: $("#step1"),
+                            action: "click"
+                        },
+                        onStep: function () {
+                            $("#step1").show();
+                            $("#step1").text("Click for step 3");
+                        }
+                    }
+                },
+                {
+                    title: "Finished",
+                    body: "Thanks for viewing our tutorial.",
+                    pointTo: $("#step1"),
+                    advanceOptions : {
+                        eventListeners: {
+                            target: $("#step1"),
+                            action: "click"
+                        },
+                        onStep: function () {
+                            $("#step1").hide();
+                        }
+                    }
+                }
+            ]
+        }
+    ];
+
+    for (var i in tutorials) {
+        var steps = [];
+        for (var j in tutorials[i].Contents) {
+            var data = tutorials[i].Contents[j];
+            steps.push(new com.eynon.tutorialStep(data.pointTo, data.title, data.body, data.advanceOptions));
+        }
+        tutorial.addSection(tutorials[i].Section, steps);
+    }
+
+    tutorial.play();
+});
+                </code></pre>
+        </div>
+        
+        <h1>Details</h1>
+        <h3>com.eynon.tutorialEy (options)</h3>
+        <p>This is the main tutorial object. Responsible for keeping track of the current section being displayed, drawing the arrow to the target, monitoring events, and positioning the window.</p>
+        <ul>
+            <li><b>options</b> 
+                <ul>
+                    <li><i>Type:</i> object</li>
+                    <li><i>Description:</i> Options for the tutorial.</li>
+                </ul>
+            </li>
+        </ul>
+        <pre><code class="language-javascript">var tutorial = new com.eynon.tutorial-ey({
+    "lockPosition": false, // Lock the position of the tutorial window in between steps.
+    "keepInFront": true, // Periodically check to make sure the window is still at the front
+    "sectionSpacer" : 15, // Gap in between section items on the left section bar.
+    "pointerControlDistance": 0.3, // The distance of the control point from the mid point of the pointer arrow. Larger = more curved arrow.
+    "arrowHeadSize": 10, // Width of the arrow head
+    "arrowHeadLength": 20, // Length of the arrow head.
+    "maxSpacing": 50, // Distance to place the tutorial window from the target of a step if that space is available.
+    "uiRefresh": 500, // Interval to refresh the UI to make sure the arrow follows any moving object.
+    "sectionCSS" : {}, // Optional CSS
+    "sectionHeaderCSS" : {}, // Optional CSS
+    "sectionItemCSS" : {},// Optional CSS
+    "activeStepCSS" : {},// Optional CSS
+    "tutorialCSS": {},// Optional CSS 
+    "stepsCSS": {},// Optional CSS
+    "stepItemCSS": {},// Optional CSS
+    "activeStepTitleCSS": {},// Optional CSS
+    "activeStepBodyCSS": {}// Optional CSS
+});
+tutorial.play(); // Open the tutorial window.
+</code></pre>
+        
+        <h4>Methods</h4>
+        <ul>
+            <li><b>close</b> 
+                <ul>
+                    <li><i>Description:</i> Close the tutorial window.</li>
+                </ul>
+            </li>
+            <li><b>goBack</b> 
+                <ul>
+                    <li><i>Description:</i> Go back one step.</li>
+                </ul>
+            </li>
+            <li><b>goForward</b> 
+                <ul>
+                    <li><i>Description:</i> Go forward one step.</li>
+                </ul>
+            </li>
+            <li><b>play</b> 
+                <ul>
+                    <li><i>Description:</i> Open the tutorial window.</li>
+                </ul>
+            </li>
+            <li><b>bringToFront</b> 
+                <ul>
+                    <li><i>Description:</i> Bring the tutorial window to the front.</li>
+                </ul>
+            </li>
+            <li><b>updateArrow</b> 
+                <ul>
+                    <li><i>Description:</i> Refresh / redraw the pointer arrow.</li>
+                </ul>
+            </li>
+            <li><b>addSection(sectionName, steps)</b> 
+                <ul>
+                    <li><i>Description:</i> add a new section with the specified steps</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <hr />
+        
+        <h3>com.eynon.tutorialSection (sectionName, steps)</h3>
+        <p>Responsible for handling an independent section. Tracks the current active step for that section.</p>
+        <ul>
+            <li><b>sectionName</b> 
+                <ul>
+                    <li><i>Type:</i> String</li>
+                    <li><i>Description:</i> Name of the tutorial section.</li>
+                </ul>
+            </li>
+            <li><b>steps</b> 
+                <ul>
+                    <li><i>Type:</i> array<com.eynon.tutorialStep> (optional)</li>
+                    <li><i>Description:</i> List of steps for this section.</li>
+                </ul>
+            </li>
+        </ul>
+        <pre><code class="language-javascript">new com.eynon.tutorialSection("Section name", mySteps);</code></pre>
+
+        <h4>Methods</h4>
+        <ul>
+            <li><b>addStep(step)</b> 
+                <ul>
+                    <li><i>Description:</i> Add the specified step (com.eynon.tutorialStep)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <hr />
+
+        <h3>com.eynon.tutorialStep (targetElement, title, content, advanceOptions)</h3>
+        <p>Contains each individual step and it's linked events.</p>
+        <ul>
+            <li><b>targetElement</b> 
+                <ul>
+                    <li><i>Type:</i> jQuery object. Optionally can be a function to be called when the step is activated that gets the jQuery object. NULL if no target</li>
+                    <li><i>Description:</i> The element to point the arrow towards when this section is active.</li>
+                </ul>
+            </li>
+            <li><b>Title</b> 
+                <ul>
+                    <li><i>Type:</i> string</li>
+                    <li><i>Description:</i> The title for the step. e.g. "Step 1"</li>
+                </ul>
+            </li>
+            <li><b>Content</b> 
+                <ul>
+                    <li><i>Type:</i> string (text or HTML)</li>
+                    <li><i>Description:</i> The body of the step that the user will read.</li>
+                </ul>
+            </li>
+            <li><b>advanceOptions</b> 
+                <ul>
+                    <li><i>Type:</i> object</li>
+                    <li><i>Description:</i> The options that control how the step behaves with user input.</li>
+                    <li><i>Object Details:</i>
+                        <ul>
+                            <li><b>onStep</b> <i>(optional)</i>
+                                <ul>
+                                    <li><i>Type:</i> callback function</li>
+                                    <li><i>Description:</i> Function to be called when the step is activated. This may be used for setting up the interface for the appropriate step. Keep in mind, a user can jump to any step at any point.</li>
+                                </ul>
+                            </li>
+                            <li><b>eventListeners</b> <i>(optional)</i>
+                                <ul>
+                                    <li><i>Type:</i> object or array of objects</li>
+                                    <li><i>Description:</i> Contains events that will trigger the current step to advance to the next step.</li>
+                                    <li><i>Object Details:</i>
+                                        <ul>
+                                            <li><b>target</b>
+                                                <ul>
+                                                    <li><i>Type:</i> jQuery object</li>
+                                                    <li><i>Description:</i> Object to listen to for events.</li>
+                                                </ul>
+                                            </li>
+                                            <li><b>action</b>
+                                                <ul>
+                                                    <li><i>Type:</i> string - (click, mouseover, etc)</li>
+                                                    <li><i>Description:</i> Action to listen for on the specified target.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        <pre><code class="language-javascript">new com.eynon.tutorialStep(
+    $("#myButton"), // Point to #myButton
+    "My Title", 
+    "Do X to advance to step Y.", 
+    {
+        eventListeners: {
+            target: $("#myButton"),
+            action: "mouseover"
+        },
+        onStep: function () {
+            $("#step1").show();
+            $("#step1").text("Mouse over for step 2");
+        }
+    }
+);
+</code></pre>
+        
+        
+    </body>
+</html>
