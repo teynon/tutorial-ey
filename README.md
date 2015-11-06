@@ -3,6 +3,23 @@ Tutorial tool for web applications.
 
 Demo: http://teynon.github.io/tutorial-ey/demo.html
 
+Dependencies
+----
+jQuery
+jQueryUI
+
+Usage
+----
+Copy the file "tutorial-ey.js", "tutorial-ey.css", and the images folder.
+
+Include the css and js. The images should be in a folder "images" that is one folder above the tutorial-ey.css file (or you can change the path in the css file).
+```
+<link rel="stylesheet" href="style/tutorial-ey.css">
+<script src="script/tutorial-ey.js"></script>
+```
+
+See demo for sample implementation.
+
 ### com.eynon.tutorialEy (options)
 
 This is the main tutorial object. Responsible for keeping track of the current section being displayed, drawing the arrow to the target, monitoring events, and positioning the window.
